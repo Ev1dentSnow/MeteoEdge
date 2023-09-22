@@ -9,8 +9,8 @@ export default function RequestedAirportItem({ ICAO, METAR, TAF }: RequestedAirp
     return (
         <div className="card w-96 bg-base-100 shadow-xl">
             <div className="card-body">
-                <h2>{ICAO}</h2>
-                <p>{METAR}</p>
+                <h2 className="font-sans">{ICAO}</h2>
+                <p className="font-sans">{METAR}</p>
             </div>
         </div>
     )
