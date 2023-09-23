@@ -4,12 +4,13 @@ import { AccordionItem, AccordionTrigger } from "./ui/accordion"
 
 interface RequestedAirportItemProps {
     ICAO: string
+    name: string
     METAR: string
     TAF: string
 }
 
 function formatAccordionItem(props: RequestedAirportItemProps): string {
-    return `${props.ICAO} | Johannesburg O.R Tambo International | ${props.METAR}`
+    return `${props.ICAO} | ${props.name} | ${props.METAR}`
 }
 
 export default function RequestedAirportItem(props: RequestedAirportItemProps) {

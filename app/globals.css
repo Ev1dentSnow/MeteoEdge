@@ -14,8 +14,8 @@
   border-right: .1em solid white;
   width: 0;
   animation: 
-    typing 3s forwards,
-    blink .9s 5;
+    typing 3s forwards linear,
+    blink .9s 6 linear;
 }
 
 .typewriter-container {

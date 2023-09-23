@@ -2,16 +2,32 @@
 
 import { Accordion } from "./ui/accordion";
 import RequestedAirportItem from "./RequestedAirportItem";
+import { useState } from "react";
+import AirportSearchBar from "./AirportSearchBar";
+
+export interface RequestedAirport {
+    ICAO: string,
+    name: string
+    METAR: string,
+    TAF: string
+}
 
 export default function RequestedAirports() {
+
+    const [requestedAirports, setRequestedAirports] = useState<Array<RequestedAirport>>([]);
+
+    function handleAddRequestedAirport(newAirport: RequestedAirport) {
+        setRequestedAirports([...requestedAirports, newAirport])
+    }
+
     return (
+        <>
+        <AirportSearchBar requestedAirports={requestedAirports} onAirportRequested={handleAddRequestedAirport} />
         <Accordion type="single" collapsible className="w-half">
-            <RequestedAirportItem ICAO="FAOR" METAR="FAOR 222100Z 36007KT CAVOK 21/M00 Q1023 NOSIG" TAF="UNABLE" />
-            <RequestedAirportItem ICAO="FAGC" METAR="FAOR 222100Z 36007KT CAVOK 21/M00 Q1023 NOSIG" TAF="UNABLE"/>
-            <RequestedAirportItem ICAO="FALA" METAR="FAOR 222100Z 36007KT CAVOK 21/M00 Q1023 NOSIG" TAF="UNABLE"/>
-            <RequestedAirportItem ICAO="FAGM" METAR="FAOR 222100Z 36007KT CAVOK 21/M00 Q1023 NOSIG" TAF="UNABLE"/>
-            <RequestedAirportItem ICAO="FAWB" METAR="FAOR 222100Z 36007KT CAVOK 21/M00 Q1023 NOSIG" TAF="UNABLE"/>
-            <RequestedAirportItem ICAO="FALE" METAR="FAOR 222100Z 36007KT CAVOK 21/M00 Q1023 NOSIG" TAF="UNABLE"/>
+            {requestedAirports?.map((airport) => (
+                <RequestedAirportItem key={airport.ICAO} ICAO={airport.ICAO} name={airport.name} METAR={airport.METAR} TAF={airport.TAF} />
+            ))}
         </Accordion>
+        </>
     )
 }

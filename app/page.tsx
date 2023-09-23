@@ -8,7 +8,6 @@ export default function Home() {
       <div className="typewriter-container">
         <div className="header">A cutting edge, cybernetically enhanced METAR/TAF app.</div>
       </div>
-      <AirportSearchBar />
       <RequestedAirports />
     </div>
   )
