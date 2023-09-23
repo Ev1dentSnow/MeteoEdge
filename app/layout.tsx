@@ -2,6 +2,7 @@ import Navigation from '@/components/Navigation'
 import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import ThemeProvider from '@/components/ThemeProvider'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -16,10 +17,14 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" data-theme="black">
+    <html lang="en">
       <body className={inter.className}>
-        <Navigation />
-        {children}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark">
+          <Navigation />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   )

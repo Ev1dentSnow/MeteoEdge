@@ -1,17 +1,24 @@
 
-interface RequestedAirportItemInterface {
+import MeteorologicalConditionBadge from "./ui/MeteorologicalConditionBadge"
+import { AccordionItem, AccordionTrigger } from "./ui/accordion"
+
+interface RequestedAirportItemProps {
     ICAO: string
     METAR: string
     TAF: string
 }
 
-export default function RequestedAirportItem({ ICAO, METAR, TAF }: RequestedAirportItemInterface) {
+function formatAccordionItem(props: RequestedAirportItemProps): string {
+    return `${props.ICAO} | Johannesburg O.R Tambo International | ${props.METAR}`
+}
+
+export default function RequestedAirportItem(props: RequestedAirportItemProps) {
     return (
-        <div className="card w-96 bg-base-100 shadow-xl">
-            <div className="card-body">
-                <h2 className="font-sans">{ICAO}</h2>
-                <p className="font-sans">{METAR}</p>
-            </div>
-        </div>
+        <AccordionItem value={formatAccordionItem(props)}>
+            <MeteorologicalConditionBadge conditions="IFR" />
+            <AccordionTrigger>{formatAccordionItem(props)}</AccordionTrigger>
+        </AccordionItem>
     )
 }
+
+

@@ -1,6 +1,11 @@
+'use client';
+
+import { Input } from "./ui/input";
 
 export default function AirportSearchBar() {
     return (
-        <input type="text" placeholder="Enter an aerodrome's ICAO Code" className="input mt-20 w-3/5"></input>
+        <div className="w-3/6 mt-20">
+            <Input type="text" placeholder="Enter an aerodrome's ICAO code" />
+        </div>
     )
 }
